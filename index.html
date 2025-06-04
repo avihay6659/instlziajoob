@@ -347,9 +347,51 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
             margin-top: 3rem;
+        }
+
+        /* Mobile specific grid layout */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 1.5rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 1rem !important;
+            }
+            
+            .service-card {
+                height: 200px !important;
+            }
+            
+            .card-front, .card-back {
+                padding: 1.5rem 1rem !important;
+            }
+            
+            .service-icon {
+                font-size: 2.5rem !important;
+                margin-bottom: 0.8rem !important;
+            }
+            
+            .card-front h3 {
+                font-size: 1rem !important;
+            }
+            
+            .card-back h3 {
+                font-size: 0.95rem !important;
+                margin-bottom: 0.8rem !important;
+            }
+            
+            .card-back p {
+                font-size: 0.8rem !important;
+                line-height: 1.4 !important;
+            }
         }
 
         .service-card {
