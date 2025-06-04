@@ -1114,21 +1114,44 @@
             }, 1500);
         });
 
-        // Add typing effect to hero text
-        const heroTitle = document.querySelector('.hero h1');
-        const originalText = heroTitle.textContent;
-        heroTitle.textContent = '';
-        
-        let i = 0;
-        function typeWriter() {
-            if (i < originalText.length) {
-                heroTitle.textContent += originalText.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100);
-            }
-        }
-        
-        setTimeout(typeWriter, 1000);
+        // Add mobile touch support for card flip
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.service-card');
+            
+            cards.forEach(card => {
+                let isFlipped = false;
+                
+                // For mobile - toggle on touch
+                card.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
+                    const cardInner = this.querySelector('.card-inner');
+                    
+                    if (!isFlipped) {
+                        cardInner.style.transform = 'rotateY(180deg)';
+                        isFlipped = true;
+                    } else {
+                        cardInner.style.transform = 'rotateY(0deg)';
+                        isFlipped = false;
+                    }
+                });
+                
+                // For desktop - keep hover
+                card.addEventListener('mouseenter', function() {
+                    if (window.innerWidth > 768) {
+                        const cardInner = this.querySelector('.card-inner');
+                        cardInner.style.transform = 'rotateY(180deg)';
+                    }
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    if (window.innerWidth > 768) {
+                        const cardInner = this.querySelector('.card-inner');
+                        cardInner.style.transform = 'rotateY(0deg)';
+                        isFlipped = false;
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
