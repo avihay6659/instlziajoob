@@ -95,63 +95,105 @@
             font-size: 1.5rem;
             cursor: pointer;
             padding: 0.5rem;
+            z-index: 1001;
+            position: relative;
         }
 
         .mobile-menu {
             display: none;
             position: fixed;
-            top: 70px;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.98);
-            backdrop-filter: blur(10px);
-            z-index: 999;
-            padding: 2rem 0;
-            border-top: 1px solid rgba(255, 215, 0, 0.2);
+            top: 0;
+            right: -300px;
+            width: 280px;
+            height: 100vh;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.98) 0%, rgba(15, 15, 15, 0.98) 100%);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 0;
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
+            border-left: 1px solid rgba(255, 215, 0, 0.2);
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .mobile-menu.active {
             display: block;
-            animation: slideDown 0.3s ease;
+            right: 0;
         }
 
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .mobile-menu-header {
+            padding: 2rem 1.5rem 1rem;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            text-align: center;
+        }
+
+        .mobile-menu-logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .mobile-menu-subtitle {
+            color: #cccccc;
+            font-size: 0.9rem;
         }
 
         .mobile-menu ul {
             list-style: none;
-            padding: 0;
+            padding: 2rem 0;
             margin: 0;
         }
 
         .mobile-menu li {
-            text-align: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.5rem;
         }
 
         .mobile-menu a {
             color: #ffffff;
             text-decoration: none;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 500;
-            padding: 1rem 2rem;
-            display: block;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
             transition: all 0.3s ease;
-            border-radius: 10px;
-            margin: 0 2rem;
+            border-left: 3px solid transparent;
         }
 
         .mobile-menu a:hover {
             background: rgba(255, 215, 0, 0.1);
             color: #FFD700;
+            border-left-color: #FFD700;
+            padding-right: 2rem;
+        }
+
+        .mobile-menu-icon {
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        /* Overlay for mobile menu */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            display: block;
+            opacity: 1;
         }
 
         .hero {
@@ -768,15 +810,24 @@
             </ul>
             <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
         </div>
-        <div class="mobile-menu" id="mobileMenu">
-            <ul>
-                <li><a href="#home">🏠 בית</a></li>
-                <li><a href="#services">🚛 שירותים</a></li>
-                <li><a href="#about">ℹ️ אודות</a></li>
-                <li><a href="#contact">📞 צור קשר</a></li>
-            </ul>
-        </div>
     </nav>
+    
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <div class="mobile-menu-logo">אוחנה הובלות</div>
+            <div class="mobile-menu-subtitle">פתרונות הובלה מקצועיים</div>
+        </div>
+        <ul>
+            <li><a href="#home"><span class="mobile-menu-icon">🏠</span>בית</a></li>
+            <li><a href="#services"><span class="mobile-menu-icon">🚛</span>שירותים</a></li>
+            <li><a href="#about"><span class="mobile-menu-icon">ℹ️</span>אודותינו</a></li>
+            <li><a href="#contact"><span class="mobile-menu-icon">📞</span>צור קשר</a></li>
+        </ul>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
@@ -935,26 +986,39 @@
         // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
 
-        mobileMenuBtn.addEventListener('click', function() {
-            mobileMenu.classList.toggle('active');
-            this.textContent = mobileMenu.classList.contains('active') ? '✕' : '☰';
-        });
+        function toggleMobileMenu() {
+            const isActive = mobileMenu.classList.contains('active');
+            
+            if (isActive) {
+                // Close menu
+                mobileMenu.classList.remove('active');
+                mobileMenuOverlay.classList.remove('active');
+                mobileMenuBtn.textContent = '☰';
+                document.body.style.overflow = '';
+            } else {
+                // Open menu
+                mobileMenu.classList.add('active');
+                mobileMenuOverlay.classList.add('active');
+                mobileMenuBtn.textContent = '✕';
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+        // Close mobile menu when clicking on overlay
+        mobileMenuOverlay.addEventListener('click', toggleMobileMenu);
 
         // Close mobile menu when clicking on a link
         document.querySelectorAll('.mobile-menu a').forEach(link => {
             link.addEventListener('click', function() {
                 mobileMenu.classList.remove('active');
+                mobileMenuOverlay.classList.remove('active');
                 mobileMenuBtn.textContent = '☰';
+                document.body.style.overflow = '';
             });
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-                mobileMenu.classList.remove('active');
-                mobileMenuBtn.textContent = '☰';
-            }
         });
 
         // Navbar scroll effect
