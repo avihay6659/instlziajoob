@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>אינסטלציה מקצועית - פתרונות מים וחימום מתקדמים</title>
+    <title>דניאל פטרוב - מאמן כושר אישי</title>
     <style>
         * {
             margin: 0;
@@ -11,1201 +11,613 @@
             box-sizing: border-box;
         }
 
+        @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Rubik', 'Arial', sans-serif;
             line-height: 1.6;
-            background: #0a0f1c;
-            color: #ffffff;
-            overflow-x: hidden;
         }
 
-        /* Animated Background */
-        .bg-animation {
+        .header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: #0a0f1c;
-            overflow: hidden;
-        }
-
-        .bg-animation::before,
-        .bg-animation::after {
-            content: '';
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-        }
-
-        .bg-animation::before {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, #3b82f6 0%, #06b6d4 30%, transparent 70%);
-            top: 10%;
-            left: 10%;
-            animation: floatBlue 25s ease-in-out infinite;
-        }
-
-        .bg-animation::after {
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, #8b5cf6 0%, #ec4899 30%, transparent 70%);
-            bottom: 20%;
-            right: 15%;
-            animation: floatPurple 30s ease-in-out infinite reverse;
-        }
-
-        .floating-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.7;
-        }
-
-        .orb1 {
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, #10b981 0%, #34d399 30%, transparent 70%);
-            top: 60%;
-            left: 70%;
-            animation: floatOrb1 40s ease-in-out infinite;
-        }
-
-        .orb2 {
-            width: 150px;
-            height: 150px;
-            background: radial-gradient(circle, #f59e0b 0%, #fbbf24 30%, transparent 70%);
-            top: 30%;
-            right: 30%;
-            animation: floatOrb2 45s ease-in-out infinite reverse;
-        }
-
-        .orb3 {
-            width: 250px;
-            height: 250px;
-            background: radial-gradient(circle, #ef4444 0%, #f97316 30%, transparent 70%);
-            bottom: 40%;
-            left: 20%;
-            animation: floatOrb3 35s ease-in-out infinite;
-        }
-
-        @keyframes floatBlue {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            25% { transform: translate(50px, -30px) scale(1.2); }
-            50% { transform: translate(100px, 20px) scale(0.8); }
-            75% { transform: translate(30px, 40px) scale(1.1); }
-        }
-
-        @keyframes floatPurple {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(-40px, -50px) scale(1.3); }
-            66% { transform: translate(60px, -20px) scale(0.9); }
-        }
-
-        @keyframes floatOrb1 {
-            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
-            25% { transform: translate(-80px, 60px) scale(1.4); opacity: 0.8; }
-            50% { transform: translate(40px, -40px) scale(0.7); opacity: 0.4; }
-            75% { transform: translate(70px, 30px) scale(1.2); opacity: 0.7; }
-        }
-
-        @keyframes floatOrb2 {
-            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
-            30% { transform: translate(90px, 80px) scale(1.1); opacity: 0.8; }
-            60% { transform: translate(-50px, -60px) scale(0.8); opacity: 0.3; }
-        }
-
-        @keyframes floatOrb3 {
-            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
-            40% { transform: translate(60px, -70px) scale(1.3); opacity: 0.9; }
-            80% { transform: translate(-40px, 50px) scale(0.9); opacity: 0.4; }
-        }
-
-        /* Glass morphism effect */
-        .glass {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-        }
-
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
+            padding: 20px 0;
+            background: rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
             z-index: 1000;
-            padding: 1rem 2rem;
-            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        .header-scrolled {
-            background: rgba(10, 15, 28, 0.95);
-            backdrop-filter: blur(20px);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, #06b6d4, #3b82f6, #8b5cf6);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: #ffffff;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: #06b6d4;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #06b6d4, #3b82f6);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .brand-logo {
             text-align: center;
+            color: white;
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            text-transform: uppercase;
+        }
+
+        .brand-subtitle {
+            text-align: center;
+            color: #00ff88;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            margin-top: 5px;
+            text-transform: uppercase;
+        }
+
+        .hero-section {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
             position: relative;
-            overflow: hidden;
         }
 
         .hero-content {
-            max-width: 800px;
-            padding: 2rem;
-            animation: fadeInUp 1s ease-out;
+            max-width: 1200px;
+            padding: 0 40px;
+            z-index: 2;
+            width: 100%;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            display: none;
         }
 
-        .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #ffffff, #06b6d4);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: textGlow 3s ease-in-out infinite alternate;
+        .hero-subtitle {
+            color: #bbb;
+            font-size: 2rem;
+            margin-bottom: 35px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
         }
 
-        @keyframes textGlow {
-            from { filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.3)); }
-            to { filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.6)); }
+        .hero-title {
+            font-size: 5.5rem;
+            font-weight: 900;
+            margin-bottom: 50px;
+            line-height: 1.1;
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.9);
+            letter-spacing: -2px;
         }
 
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            color: #94a3b8;
-            animation: fadeInUp 1s ease-out 0.3s both;
+        .hero-title .highlight {
+            color: #00ff88;
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
         }
 
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeInUp 1s ease-out 0.6s both;
+        .hero-title .red-highlight {
+            color: #ff4444;
+            text-shadow: 0 0 20px rgba(255, 68, 68, 0.5);
         }
 
-        .btn {
-            padding: 1rem 2rem;
+        .hero-description {
+            font-size: 4.5rem;
+            margin-bottom: 50px;
+            color: #fff;
+            line-height: 1.6;
+            font-weight: 700;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+        }
+
+        .hero-features {
+            font-size: 4rem;
+            margin-bottom: 70px;
+            color: #fff;
+            line-height: 1.7;
+            font-weight: 700;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-tagline {
+            font-size: 6rem;
+            margin-bottom: 40px;
+            color: white;
+            font-weight: 900;
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.9);
+            letter-spacing: 3px;
+        }
+
+        .hero-subtitle-bottom {
+            font-size: 1.8rem;
+            margin-bottom: 60px;
+            color: #ddd;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ff4444, #ff6666);
+            color: white;
+            padding: 30px 70px;
+            font-size: 1.8rem;
+            font-weight: 900;
             border: none;
             border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 10px 35px rgba(255, 68, 68, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, #06b6d4, #3b82f6);
-            color: white;
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 68, 68, 0.4);
+            background: linear-gradient(45deg, #ff3333, #ff5555);
         }
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.3);
+        .bottom-text {
+            margin-top: 40px;
+            font-size: 1.4rem;
+            color: #ccc;
+            max-width: 800px;
+            line-height: 1.8;
+            font-weight: 500;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
         }
 
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        @media (max-width: 768px) {
+            .hero-content {
+                padding: 0 25px;
+            }
+            
+            .brand-name {
+                font-size: 4rem;
+                letter-spacing: 4px;
+            }
+            
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+            
+            .hero-tagline {
+                font-size: 2.2rem;
+            }
+            
+            .hero-description {
+                font-size: 1.4rem;
+            }
+            
+            .hero-features {
+                font-size: 1.2rem;
+            }
+            
+            .cta-button {
+                padding: 22px 50px;
+                font-size: 1.4rem;
+            }
         }
 
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-3px);
+        .section-two {
+            background: #f8f9fa;
+            padding: 100px 20px;
+            text-align: center;
+            color: #333;
         }
 
-        /* Floating elements */
-        .floating-icon {
-            position: absolute;
-            animation: float 6s ease-in-out infinite;
-            opacity: 0.7;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-        }
-
-        .floating-icon:nth-child(1) {
-            top: 20%;
-            right: 10%;
-            animation-delay: 0s;
-            font-size: 3rem;
-            color: #06b6d4;
-        }
-
-        .floating-icon:nth-child(2) {
-            top: 60%;
-            left: 10%;
-            animation-delay: 2s;
-            font-size: 2.5rem;
-            color: #3b82f6;
-        }
-
-        .floating-icon:nth-child(3) {
-            bottom: 20%;
-            right: 20%;
-            animation-delay: 4s;
-            font-size: 2rem;
-            color: #8b5cf6;
-        }
-
-        /* Services Section */
-        .services {
-            padding: 5rem 2rem;
-            max-width: 1200px;
+        .section-two-content {
+            max-width: 1000px;
             margin: 0 auto;
         }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
+        .section-two-subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 30px;
+            font-weight: 400;
         }
 
-        .section-title h2 {
+        .section-two-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: #333;
+            line-height: 1.2;
+        }
+
+        .section-two-title .highlight-red {
+            color: #ff4444;
+        }
+
+        .section-two-brand {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 50px;
+            font-weight: 400;
+        }
+
+        .price-section {
+            margin: 60px 0;
+        }
+
+        .price-crossed {
             font-size: 2.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #ffffff, #06b6d4);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #00cc66;
+            text-decoration: line-through;
+            margin-bottom: 10px;
+            font-weight: 600;
         }
 
-        .services-grid {
+        .price-main {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .price-main .highlight-red {
+            color: #ff4444;
+        }
+
+        .price-details {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .price-guarantee {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .description-main {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .description-small {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 50px;
+            line-height: 1.6;
+        }
+
+        .chevron-down {
+            color: #00cc66;
+            font-size: 2rem;
+            margin: 30px 0;
+        }
+
+        .cta-button-section2 {
+            background: linear-gradient(45deg, #ff4444, #ff6666);
+            color: white;
+            padding: 20px 50px;
+            font-size: 1.3rem;
+            font-weight: 800;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 6px 20px rgba(255, 68, 68, 0.3);
+            margin-bottom: 30px;
+        }
+
+        .cta-button-section2:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 68, 68, 0.4);
+        }
+
+        .bottom-note {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        .shape-plus-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #333;
+            margin-top: 80px;
+            margin-bottom: 60px;
+        }
+
+        .shape-plus-title .highlight-green {
+            color: #00cc66;
+        }
+
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            padding: 0 20px;
         }
 
-        /* Mobile specific grid layout */
-        @media (max-width: 1024px) {
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 1.5rem !important;
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            border-top: 4px solid #ff4444;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .feature-card:nth-child(2) {
+            border-top-color: #00cc66;
+        }
+
+        .feature-card:nth-child(3) {
+            border-top-color: #007bff;
+        }
+
+        .feature-card:nth-child(4) {
+            border-top-color: #ffc107;
+        }
+
+        .feature-card:nth-child(5) {
+            border-top-color: #6f42c1;
+        }
+
+        .feature-card:nth-child(6) {
+            border-top-color: #fd7e14;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #ff4444;
+        }
+
+        .feature-card:nth-child(2) .feature-icon {
+            color: #00cc66;
+        }
+
+        .feature-card:nth-child(3) .feature-icon {
+            color: #007bff;
+        }
+
+        .feature-card:nth-child(4) .feature-icon {
+            color: #ffc107;
+        }
+
+        .feature-card:nth-child(5) .feature-icon {
+            color: #6f42c1;
+        }
+
+        .feature-card:nth-child(6) .feature-icon {
+            color: #fd7e14;
+        }
+
+        .feature-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .feature-description {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .feature-card {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-two {
+                padding: 60px 15px;
+            }
+            
+            .section-two-title {
+                font-size: 2.5rem;
+            }
+            
+            .price-main {
+                font-size: 3rem;
+            }
+            
+            .price-crossed {
+                font-size: 2rem;
+            }
+            
+            .shape-plus-title {
+                font-size: 2rem;
             }
         }
 
         @media (max-width: 480px) {
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 1rem !important;
+            .section-two-title {
+                font-size: 2rem;
             }
             
-            .service-card {
-                height: 200px !important;
-            }
-            
-            .card-front, .card-back {
-                padding: 1.5rem 1rem !important;
-            }
-            
-            .service-icon {
-                font-size: 2.5rem !important;
-                margin-bottom: 0.8rem !important;
-            }
-            
-            .card-front h3 {
-                font-size: 1rem !important;
-            }
-            
-            .card-back h3 {
-                font-size: 0.95rem !important;
-                margin-bottom: 0.8rem !important;
-            }
-            
-            .card-back p {
-                font-size: 0.8rem !important;
-                line-height: 1.4 !important;
-            }
-        }
-
-        .service-card {
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            perspective: 1000px;
-            height: 250px;
-        }
-
-        .card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.8s;
-            transform-style: preserve-3d;
-            cursor: pointer;
-        }
-
-        .service-card:hover .card-inner {
-            transform: rotateY(180deg);
-        }
-
-        .card-front, .card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 20px;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .card-front {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .card-back {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transform: rotateY(180deg);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.5s;
-            z-index: 1;
-        }
-
-        .service-card:hover::before {
-            left: 100%;
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #06b6d4, #3b82f6);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .card-front h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #ffffff;
-        }
-
-        .card-back h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            color: #ffffff;
-            font-weight: bold;
-        }
-
-        .card-back p {
-            color: #94a3b8;
-            line-height: 1.6;
-            font-size: 1rem;
-        }
-
-        /* About Section */
-        .about {
-            padding: 5rem 2rem;
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        .about-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #ffffff, #06b6d4);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .about-text p {
-            color: #94a3b8;
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .stat {
-            text-align: center;
-            padding: 1.5rem;
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, #06b6d4, #3b82f6);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .stat-label {
-            color: #94a3b8;
-            margin-top: 0.5rem;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 5rem 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact-form {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 3rem;
-            border-radius: 20px;
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-            text-align: right;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #ffffff;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            color: #ffffff;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #06b6d4;
-            box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: #94a3b8;
-        }
-
-        /* Social Media Buttons */
-        .social-buttons {
-            position: fixed;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .social-btn {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            font-size: 1.5rem;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(20px);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .social-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.6s;
-        }
-
-        .social-btn:hover::before {
-            transform: translateX(100%);
-        }
-
-        .social-btn:hover {
-            transform: scale(1.15) translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-        }
-
-        .whatsapp {
-            background: linear-gradient(135deg, #25d366, #128c7e);
-            color: white;
-        }
-
-        .whatsapp:hover {
-            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4);
-            transform: scale(1.15) translateY(-5px);
-        }
-
-        .facebook {
-            background: linear-gradient(135deg, #1877f2, #166fe5);
-            color: white;
-        }
-
-        .facebook:hover {
-            box-shadow: 0 15px 35px rgba(24, 119, 242, 0.4);
-        }
-
-        .instagram {
-            background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
-            color: white;
-        }
-
-        .instagram:hover {
-            box-shadow: 0 15px 35px rgba(131, 58, 180, 0.4);
-        }
-
-        .tiktok {
-            background: linear-gradient(135deg, #000000, #ff0050);
-            color: white;
-        }
-
-        .tiktok:hover {
-            box-shadow: 0 15px 35px rgba(255, 0, 80, 0.4);
-        }
-
-        /* Floating Social Tooltip */
-        .social-btn::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            right: 75px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.9);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .social-btn:hover::after {
-            opacity: 1;
-            visibility: visible;
-            right: 70px;
-        }
-
-        /* Footer */
-        footer {
-            padding: 3rem 2rem;
-            background: rgba(0, 0, 0, 0.3);
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: #94a3b8;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: #06b6d4;
-        }
-
-        .footer-social {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-social-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            font-size: 1.3rem;
-            transition: all 0.3s ease;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .footer-social-btn:hover {
-            transform: translateY(-5px) scale(1.1);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
+            .price-main {
                 font-size: 2.5rem;
             }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .social-buttons {
-                left: 10px;
-                gap: 0.8rem;
-            }
-
-            .social-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 1.3rem;
-            }
-
-            .social-btn::after {
-                display: none;
+            
+            .cta-button-section2 {
+                padding: 15px 35px;
+                font-size: 1.1rem;
             }
         }
-
-        /* Scroll animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
+            .hero-content {
+                padding: 0 20px;
+            }
+            
+            .brand-name {
+                font-size: 3rem;
+                letter-spacing: 3px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero-tagline {
+                font-size: 1.8rem;
+            }
+            
+            .hero-description {
+                font-size: 1.1rem;
+            }
+            
+            .hero-features {
+                font-size: 1rem;
+            }
         }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+            
+            .hero-subtitle, .hero-description, .hero-features {
+                font-size: 1rem;
+            }
+            
+            .hero-tagline {
+                font-size: 1.4rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Animated Background -->
-    <div class="bg-animation">
-        <div class="floating-orb orb1"></div>
-        <div class="floating-orb orb2"></div>
-        <div class="floating-orb orb3"></div>
-        <div class="floating-orb orb4"></div>
-        <div class="floating-orb orb5"></div>
-        <div class="floating-orb orb6"></div>
-    </div>
-
-    <!-- Social Media Floating Buttons -->
-    <div class="social-buttons">
-        <a href="https://wa.me/972547835327" class="social-btn whatsapp" data-tooltip="שלח הודעה בוואטסאפ" target="_blank">
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.893 3.386"/>
-            </svg>
-        </a>
-        <a href="https://www.facebook.com/avihayvk" class="social-btn facebook" data-tooltip="עקוב בפייסבוק" target="_blank">
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-            </svg>
-        </a>
-        <a href="https://www.instagram.com/avihayvaknin/" class="social-btn instagram" data-tooltip="עקוב באינסטגרם" target="_blank">
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-            </svg>
-        </a>
-        <a href="https://tiktok.com/@yourpage" class="social-btn tiktok" data-tooltip="עקוב בטיקטוק" target="_blank">
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
-            </svg>
-        </a>
-    </div>
-
-    <!-- Header -->
-    <header id="header">
-        <nav>
-            <div class="logo">🔧 אינסטלציה פרו</div>
-            <ul class="nav-links">
-                <li><a href="#home">בית</a></li>
-                <li><a href="#services">שירותים</a></li>
-                <li><a href="#about">אודות</a></li>
-                <li><a href="#contact">צור קשר</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
+    <section class="hero-section">
         <div class="hero-content">
-            <h1>פתרונות אינסטלציה מתקדמים</h1>
-            <p>אינסטלציה מקצועית עם טכנולוגיה חדישה ושירות ברמה הגבוהה ביותר. זמינים 24/7 לכל קריאת חירום</p>
-            <div class="cta-buttons">
-                <a href="#contact" class="btn btn-primary">קבל הצעת מחיר</a>
-                <a href="tel:0547835327" class="btn btn-secondary">התקשר עכשיו</a>
-            </div>
-        </div>
-        
-        <!-- Floating Icons -->
-        <div class="floating-icon">🔧</div>
-        <div class="floating-icon">💧</div>
-        <div class="floating-icon">🔥</div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services" id="services">
-        <div class="section-title">
-            <h2>השירותים שלנו</h2>
-            <p>פתרונות מקצועיים לכל צרכי האינסטלציה והחימום</p>
-        </div>
-        
-        <div class="services-grid">
-            <div class="service-card glass fade-in">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <div class="service-icon">🚿</div>
-                        <h3>אינסטלציה סניטרית</h3>
-                    </div>
-                    <div class="card-back">
-                        <h3>אינסטלציה סניטרית</h3>
-                        <p>התקנה ותיקון של כל מערכות המים, ברזים, אסלות ומקלחות עם חומרים איכותיים ואחריות מלאה</p>
-                    </div>
-                </div>
+            <div class="brand-name">דניאל פטרוב</div>
+            
+            <div class="hero-subtitle">אחרי שנים של ניסיון עם אלפי מתאמנים,</div>
+            
+            <h1 class="hero-title">
+                למדנו ש-<span class="highlight">הצלחה</span> דורשת<br>
+                יותר מ-<span class="red-highlight">רק אימונים</span>.
+            </h1>
+            
+            <div class="hero-description">
+                כדי להגיע לתוצאות אמיתיות<br>
+                ולהשיג התקדמות לאורך זמן, חובה לקבל הדרכה נכונה.
             </div>
             
-            <div class="service-card glass fade-in">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <div class="service-icon">🔥</div>
-                        <h3>מערכות חימום</h3>
-                    </div>
-                    <div class="card-back">
-                        <h3>מערכות חימום</h3>
-                        <p>התקנת דודי שמש, רדיאטורים, חימום תת רצפתי ומערכות חימום חדישות לבית ולמשרד</p>
-                    </div>
-                </div>
+            <div class="hero-features">
+                אימונים מותאמים אישית • תוכניות תזונה מקצועיות • ליווי צמוד לאורך כל הדרך • קבוצת תמיכה ומוטיבציה • כלים דיגיטליים מתקדמים
             </div>
             
-            <div class="service-card glass fade-in">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <div class="service-icon">🔧</div>
-                        <h3>תחזוקה ותיקונים</h3>
-                    </div>
-                    <div class="card-back">
-                        <h3>תחזוקה ותיקונים</h3>
-                        <p>שירותי חירום 24/7, תחזוקה מונעת ותיקון תקלות במהירות ובמקצועיות הגבוהה ביותר</p>
-                    </div>
-                </div>
+            <div class="hero-tagline">
+                לכן פיתחנו שיטת SUCCESS
             </div>
             
-            <div class="service-card glass fade-in">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <div class="service-icon">💧</div>
-                        <h3>זיהוי נזילות</h3>
-                    </div>
-                    <div class="card-back">
-                        <h3>זיהוי נזילות</h3>
-                        <p>טכנולוגיה מתקדמת לזיהוי נזילות נסתרות ותיקונן ללא פגיעה ברצפות וקירות</p>
-                    </div>
-                </div>
+            <div class="hero-subtitle-bottom">
+                כי שינוי אמיתי זה הרבה יותר מאימונים
             </div>
             
-            <div class="service-card glass fade-in">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <div class="service-icon">🏠</div>
-                        <h3>פרויקטים מורכבים</h3>
-                    </div>
-                    <div class="card-back">
-                        <h3>פרויקטים מורכבים</h3>
-                        <p>תכנון וביצוע מערכות אינסטלציה מורכבות לבתים פרטיים, בניינים ומתחמים מסחריים</p>
-                    </div>
-                </div>
-            </div>
+            <a href="#" class="cta-button">בואו נתחיל את המסע</a>
             
-            <div class="service-card glass fade-in">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <div class="service-icon">⚡</div>
-                        <h3>טכנולוגיה חכמה</h3>
-                    </div>
-                    <div class="card-back">
-                        <h3>טכנולוגיה חכמה</h3>
-                        <p>התקנת מערכות חכמות לניהול צריכת מים וחימום, חיסכון באנרגיה ובקרה מרחוק</p>
-                    </div>
-                </div>
+            <div class="bottom-text">
+                מצטרפים עכשיו ומקבלים תוכנית מותאמת אישית, ליווי צמוד למשך חודש מלא - לגמרי בחינם!
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="about-content">
-            <div class="about-text fade-in">
-                <h2>למה לבחור בנו?</h2>
-                <p>עם מעל 15 שנות נסיון בתחום האינסטלציה, אנחנו מביאים איתנו מקצועיות, אמינות וטכנולוגיה מתקדמת. הצוות שלנו מורכב ממומחים מוסמכים שעוברים הדרכות שוטפות על הטכנולוגיות החדישות ביותר.</p>
-                <p>אנחנו מתמחים בפתרונות מותאמים אישית, משתמשים בחומרים איכותיים בלבד ומעניקים אחריות מלאה על כל העבודות. הזמינות שלנו 24/7 מבטיחה שאתם לא תישארו לבד עם תקלות חירום.</p>
+    <section class="section-two">
+        <div class="section-two-content">
+            <div class="section-two-subtitle">לזמן מוגבל בלבד! הצעה מיוחדת למתאמנים החדשים</div>
+            
+            <h2 class="section-two-title">
+                הזדמנות זהב להצטרף <span class="highlight-red">במחיר מיוחד!</span>
+            </h2>
+            
+            <div class="section-two-brand">החבילה המדהימה של דניאל פטרוב</div>
+            
+            <div class="price-section">
+                <div class="price-crossed">₪650</div>
+                <div class="chevron-down">▼▼▼</div>
+                <div class="price-main">רק ב-<span class="highlight-red">450</span> ש"ח לחודש!</div>
+                <div class="price-details">מחיר מיוחד לחודש הראשון</div>
+                <div class="price-guarantee">+ הערכה ראשונית בחינם</div>
+            </div>
+            
+            <div class="description-main">המבצע מוגבל לזמן קצר - רק ל-50 המתאמנים הראשונים!</div>
+            
+            <div class="description-small">החבילה כוללת: תוכנית אימונים מותאמת אישית + תזונה מקצועית + ליווי צמוד + גישה לאפליקציה + קבוצת תמיכה פרטית.</div>
+            
+            <div class="chevron-down">▼▼▼</div>
+            
+            <a href="#" class="cta-button-section2">← אני רוצה להתחיל ←</a>
+            
+            <div class="bottom-note">💡 זוהי ההזדמנות הטובה ביותר להתחיל את המסע שלך לגוף חלומותיך עם החיסכון הגדול ביותר!</div>
+            
+            <h3 class="shape-plus-title">מה אקבל ב<span class="highlight-green">חבילה המדהימה</span> של דניאל פטרוב</h3>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💪</div>
+                    <h4 class="feature-title">אימונים מותאמים אישית</h4>
+                    <p class="feature-description">תוכניות אימון מותאמות בדיוק לרמתך, למטרותיך ולזמן הפנוי שלך. כל אימון מבוסס על הערכה מדעית של יכולותיך.</p>
+                </div>
                 
-                <div class="stats">
-                    <div class="stat">
-                        <div class="stat-number">500+</div>
-                        <div class="stat-label">לקוחות מרוצים</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">15+</div>
-                        <div class="stat-label">שנות נסיון</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">24/7</div>
-                        <div class="stat-label">זמינות</div>
-                    </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🥗</div>
+                    <h4 class="feature-title">תזונה מקצועית</h4>
+                    <p class="feature-description">תפריט תזונה מותאם אישית עם מתכונים קלים ופרקטיים. ליווי צמוד של דיאטנית מוסמכת לאורך כל הדרך.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h4 class="feature-title">אפליקציה חכמה</h4>
+                    <p class="feature-description">מעקב אחר ההתקדמות, תזכורות לאימונים, ספירת קלוריות אוטומטית ועוד המון כלים דיגיטליים מתקדמים.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h4 class="feature-title">קבוצת תמיכה</h4>
+                    <p class="feature-description">הצטרפות לקהילה פרטית של מתאמנים עם אותן מטרות. שיתוף חוויות, עידוד הדדי ואתגרים מהנים.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📞</div>
+                    <h4 class="feature-title">ליווי אישי 24/7</h4>
+                    <p class="feature-description">גישה ישירה אליי בווטסאפ לכל שאלה, עידוד ויעוץ. אני כאן בשבילך בכל שלב של המסע.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h4 class="feature-title">מעקב והתאמות</h4>
+                    <p class="feature-description">בדיקות התקדמות קבועות עם התאמת התוכנית לפי התוצאות. אנחנו מתאימים הכל כך שתגיע ליעדים בצורה הטובה ביותר.</p>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="section-title">
-            <h2>צור קשר</h2>
-            <p>נשמח לעזור לכם עם כל פרויקט או תקלה</p>
-        </div>
-        
-        <div class="contact-form glass fade-in">
-            <form>
-                <div class="form-group">
-                    <label for="name">שם מלא</label>
-                    <input type="text" id="name" name="name" placeholder="השם שלך" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="phone">טלפון</label>
-                    <input type="tel" id="phone" name="phone" placeholder="מספר הטלפון שלך" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">אימייל</label>
-                    <input type="email" id="email" name="email" placeholder="כתובת האימייל שלך">
-                </div>
-                
-                <div class="form-group">
-                    <label for="service">סוג השירות</label>
-                    <select id="service" name="service" style="width: 100%; padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 10px; background: rgba(255, 255, 255, 0.05); color: #ffffff;">
-                        <option value="">בחר סוג שירות</option>
-                        <option value="plumbing">אינסטלציה סניטרית</option>
-                        <option value="heating">מערכות חימום</option>
-                        <option value="maintenance">תחזוקה ותיקונים</option>
-                        <option value="leak">זיהוי נזילות</option>
-                        <option value="complex">פרויקט מורכב</option>
-                        <option value="emergency">חירום</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="message">תיאור הבעיה/פרויקט</label>
-                    <textarea id="message" name="message" rows="4" placeholder="תאר את מה שאתה צריך..."></textarea>
-                </div>
-                
-                <button type="submit" class="btn btn-primary" style="width: 100%;">שלח הודעה</button>
-            </form>
-            
-            <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
-                <p style="color: #06b6d4; font-size: 1.2rem; margin-bottom: 1rem;">📞 <strong>054-783-5327</strong></p>
-                <p style="color: #94a3b8;">זמינים 24/7 לקריאות חירום</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-social">
-                <a href="https://wa.me/972547835327" class="footer-social-btn whatsapp" target="_blank">
-                    <svg width="25" height="25" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.893 3.386"/>
-                    </svg>
-                </a>
-                <a href="https://www.facebook.com/avihayvk" class="footer-social-btn facebook" target="_blank">
-                    <svg width="25" height="25" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                    </svg>
-                </a>
-                <a href="https://www.instagram.com/avihayvaknin/" class="footer-social-btn instagram" target="_blank">
-                    <svg width="25" height="25" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                    </svg>
-                </a>
-                <a href="https://tiktok.com/@yourpage" class="footer-social-btn tiktok" target="_blank">
-                    <svg width="25" height="25" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
-                    </svg>
-                </a>
-            </div>
-            
-            <div class="footer-links">
-                <a href="#home">בית</a>
-                <a href="#services">שירותים</a>
-                <a href="#about">אודות</a>
-                <a href="#contact">צור קשר</a>
-            </div>
-            <p style="color: #94a3b8;">&copy; 2025 אינסטלציה פרו. כל הזכויות שמורות.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('header');
-            if (window.scrollY > 100) {
-                header.classList.add('header-scrolled');
-            } else {
-                header.classList.remove('header-scrolled');
-            }
-        });
-
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Fade in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Form submission
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Simulate form submission
-            const btn = this.querySelector('button[type="submit"]');
-            const originalText = btn.textContent;
-            btn.textContent = 'שולח...';
-            btn.disabled = true;
-            
-            setTimeout(() => {
-                btn.textContent = 'נשלח בהצלחה! ✓';
-                btn.style.background = 'linear-gradient(135deg, #059669, #10b981)';
-                
-                setTimeout(() => {
-                    btn.textContent = originalText;
-                    btn.disabled = false;
-                    btn.style.background = 'linear-gradient(135deg, #06b6d4, #3b82f6)';
-                    this.reset();
-                }, 2000);
-            }, 1500);
-        });
-
-        // Add typing effect to hero text
-        const heroTitle = document.querySelector('.hero h1');
-        const originalText = heroTitle.textContent;
-        heroTitle.textContent = '';
-        
-        let i = 0;
-        function typeWriter() {
-            if (i < originalText.length) {
-                heroTitle.textContent += originalText.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100);
-            }
-        }
-        
-        setTimeout(typeWriter, 1000);
-
-        // Mobile touch support for service cards flip
-        document.addEventListener('DOMContentLoaded', function() {
-            const serviceCards = document.querySelectorAll('.service-card');
-            
-            serviceCards.forEach(function(card) {
-                let isFlipped = false;
-                
-                // Mobile touch event
-                card.addEventListener('click', function(e) {
-                    // Only for mobile/tablet screens
-                    if (window.innerWidth <= 1024) {
-                        e.preventDefault();
-                        const cardInner = this.querySelector('.card-inner');
-                        
-                        if (!isFlipped) {
-                            cardInner.style.transform = 'rotateY(180deg)';
-                            isFlipped = true;
-                        } else {
-                            cardInner.style.transform = 'rotateY(0deg)';
-                            isFlipped = false;
-                        }
-                    }
-                });
-                
-                // Reset flip state when screen size changes
-                window.addEventListener('resize', function() {
-                    if (window.innerWidth > 1024) {
-                        const cardInner = card.querySelector('.card-inner');
-                        cardInner.style.transform = 'rotateY(0deg)';
-                        isFlipped = false;
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 </html>
