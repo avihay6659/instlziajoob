@@ -86,6 +86,74 @@
             width: 100%;
         }
 
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #FFD700;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 999;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .mobile-menu.active {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-menu li {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .mobile-menu a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 1rem 2rem;
+            display: block;
+            transition: all 0.3s ease;
+            border-radius: 10px;
+            margin: 0 2rem;
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(255, 215, 0, 0.1);
+            color: #FFD700;
+        }
+
         .hero {
             height: 100vh;
             min-height: 600px;
@@ -460,6 +528,10 @@
                 display: none;
             }
 
+            .mobile-menu-btn {
+                display: block;
+            }
+
             .hero {
                 padding: 0 1rem;
                 min-height: 100vh;
@@ -499,13 +571,28 @@
             }
 
             .services-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
             }
 
             .service-card {
-                padding: 2rem;
+                padding: 1.5rem;
                 margin: 0;
+            }
+
+            .service-icon {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .service-card h3 {
+                font-size: 1.2rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .service-card p {
+                font-size: 0.9rem;
+                line-height: 1.5;
             }
 
             .about-content {
@@ -586,6 +673,30 @@
 
         /* Extra small screens */
         @media (max-width: 480px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+
+            .service-card {
+                padding: 1.2rem;
+            }
+
+            .service-icon {
+                font-size: 2.2rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .service-card h3 {
+                font-size: 1.1rem;
+                margin-bottom: 0.6rem;
+            }
+
+            .service-card p {
+                font-size: 0.85rem;
+                line-height: 1.4;
+            }
+
             .hero h1 {
                 font-size: 2rem;
             }
@@ -596,10 +707,6 @@
 
             .section-title {
                 font-size: 1.8rem;
-            }
-
-            .service-card {
-                padding: 1.5rem;
             }
 
             .stats {
@@ -658,6 +765,15 @@
                 <li><a href="#services">שירותים</a></li>
                 <li><a href="#about">אודות</a></li>
                 <li><a href="#contact">צור קשר</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="#home">🏠 בית</a></li>
+                <li><a href="#services">🚛 שירותים</a></li>
+                <li><a href="#about">ℹ️ אודות</a></li>
+                <li><a href="#contact">📞 צור קשר</a></li>
             </ul>
         </div>
     </nav>
@@ -816,6 +932,31 @@
     </footer>
 
     <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+            this.textContent = mobileMenu.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                mobileMenuBtn.textContent = '☰';
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+                mobileMenuBtn.textContent = '☰';
+            }
+        });
+
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
