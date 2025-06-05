@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>דניאל פטרוב - מאמן כושר אישי</title>
+    <title>אוחנה הובלות - פתרונות הובלה מקצועיים</title>
     <style>
         * {
             margin: 0;
@@ -11,613 +11,767 @@
             box-sizing: border-box;
         }
 
-        @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
-        
         body {
-            font-family: 'Rubik', 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #0f0f0f 50%, #1a1a1a 100%);
+            color: #ffffff;
+            overflow-x: hidden;
             line-height: 1.6;
         }
 
-        .header {
+        /* Navigation */
+        .navbar {
             position: fixed;
             top: 0;
-            left: 0;
             width: 100%;
-            padding: 20px 0;
-            background: rgba(0,0,0,0.1);
+            background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
         }
 
-        .brand-logo {
-            text-align: center;
-            color: white;
-            font-size: 2.2rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-            text-transform: uppercase;
+        .navbar.scrolled {
+            background: rgba(0, 0, 0, 0.98);
+            box-shadow: 0 2px 20px rgba(255, 215, 0, 0.1);
         }
 
-        .brand-subtitle {
-            text-align: center;
-            color: #00ff88;
-            font-size: 0.9rem;
-            font-weight: 400;
-            letter-spacing: 3px;
-            margin-top: 5px;
-            text-transform: uppercase;
-        }
-
-        .hero-section {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            text-align: center;
-            color: white;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
             position: relative;
         }
 
-        .hero-content {
-            max-width: 1200px;
-            padding: 0 40px;
-            z-index: 2;
+        .nav-links a:hover {
+            color: #FFD700;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
             width: 100%;
         }
 
-            display: none;
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: 
+                linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.8) 100%),
+                url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2946&q=80') center/cover no-repeat;
         }
 
-        .hero-subtitle {
-            color: #bbb;
-            font-size: 2rem;
-            margin-bottom: 35px;
-            font-weight: 500;
-            letter-spacing: 1px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23333" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.1;
+            animation: float 20s ease-in-out infinite;
         }
 
-        .hero-title {
-            font-size: 5.5rem;
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(0.5deg); }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
             font-weight: 900;
-            margin-bottom: 50px;
-            line-height: 1.1;
-            text-shadow: 4px 4px 8px rgba(0,0,0,0.9);
-            letter-spacing: -2px;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF8C00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideInUp 1s ease-out 0.5s both;
         }
 
-        .hero-title .highlight {
-            color: #00ff88;
-            text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
-        }
-
-        .hero-title .red-highlight {
-            color: #ff4444;
-            text-shadow: 0 0 20px rgba(255, 68, 68, 0.5);
-        }
-
-        .hero-description {
-            font-size: 4.5rem;
-            margin-bottom: 50px;
-            color: #fff;
-            line-height: 1.6;
-            font-weight: 700;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
-        }
-
-        .hero-features {
-            font-size: 4rem;
-            margin-bottom: 70px;
-            color: #fff;
-            line-height: 1.7;
-            font-weight: 700;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-tagline {
-            font-size: 6rem;
-            margin-bottom: 40px;
-            color: white;
-            font-weight: 900;
-            text-shadow: 4px 4px 8px rgba(0,0,0,0.9);
-            letter-spacing: 3px;
-        }
-
-        .hero-subtitle-bottom {
-            font-size: 1.8rem;
-            margin-bottom: 60px;
-            color: #ddd;
-            font-weight: 600;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        .hero .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: #cccccc;
+            margin-bottom: 2rem;
+            animation: slideInUp 1s ease-out 0.7s both;
         }
 
         .cta-button {
-            background: linear-gradient(45deg, #ff4444, #ff6666);
-            color: white;
-            padding: 30px 70px;
-            font-size: 1.8rem;
-            font-weight: 900;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
             display: inline-block;
-            box-shadow: 0 10px 35px rgba(255, 68, 68, 0.5);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            animation: slideInUp 1s ease-out 0.9s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
         }
 
         .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 68, 68, 0.4);
-            background: linear-gradient(45deg, #ff3333, #ff5555);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
         }
 
-        .bottom-text {
-            margin-top: 40px;
-            font-size: 1.4rem;
-            color: #ccc;
-            max-width: 800px;
-            line-height: 1.8;
-            font-weight: 500;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-        }
-
-        @media (max-width: 768px) {
-            .hero-content {
-                padding: 0 25px;
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
             }
-            
-            .brand-name {
-                font-size: 4rem;
-                letter-spacing: 4px;
-            }
-            
-            .hero-title {
-                font-size: 3.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.5rem;
-            }
-            
-            .hero-tagline {
-                font-size: 2.2rem;
-            }
-            
-            .hero-description {
-                font-size: 1.4rem;
-            }
-            
-            .hero-features {
-                font-size: 1.2rem;
-            }
-            
-            .cta-button {
-                padding: 22px 50px;
-                font-size: 1.4rem;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        .section-two {
-            background: #f8f9fa;
-            padding: 100px 20px;
-            text-align: center;
-            color: #333;
+        /* Services Section */
+        .services {
+            padding: 6rem 0;
+            background: linear-gradient(180deg, #0f0f0f 0%, #000000 100%);
         }
 
-        .section-two-content {
-            max-width: 1000px;
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 0 2rem;
         }
 
-        .section-two-subtitle {
-            font-size: 1.3rem;
-            color: #666;
-            margin-bottom: 30px;
-            font-weight: 400;
+        .section-title {
+            text-align: center;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: bold;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .section-two-title {
-            font-size: 3.5rem;
-            font-weight: 900;
-            margin-bottom: 20px;
-            color: #333;
-            line-height: 1.2;
-        }
-
-        .section-two-title .highlight-red {
-            color: #ff4444;
-        }
-
-        .section-two-brand {
-            font-size: 1.1rem;
-            color: #666;
-            margin-bottom: 50px;
-            font-weight: 400;
-        }
-
-        .price-section {
-            margin: 60px 0;
-        }
-
-        .price-crossed {
-            font-size: 2.5rem;
-            color: #00cc66;
-            text-decoration: line-through;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .price-main {
-            font-size: 4rem;
-            font-weight: 900;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        .price-main .highlight-red {
-            color: #ff4444;
-        }
-
-        .price-details {
-            font-size: 1rem;
-            color: #666;
-            margin-bottom: 5px;
-        }
-
-        .price-guarantee {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 40px;
-        }
-
-        .description-main {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 30px;
-            line-height: 1.5;
-        }
-
-        .description-small {
-            font-size: 1rem;
-            color: #666;
-            margin-bottom: 50px;
-            line-height: 1.6;
-        }
-
-        .chevron-down {
-            color: #00cc66;
-            font-size: 2rem;
-            margin: 30px 0;
-        }
-
-        .cta-button-section2 {
-            background: linear-gradient(45deg, #ff4444, #ff6666);
-            color: white;
-            padding: 20px 50px;
-            font-size: 1.3rem;
-            font-weight: 800;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            box-shadow: 0 6px 20px rgba(255, 68, 68, 0.3);
-            margin-bottom: 30px;
-        }
-
-        .cta-button-section2:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 68, 68, 0.4);
-        }
-
-        .bottom-note {
-            font-size: 0.9rem;
-            color: #666;
-            margin-top: 20px;
-        }
-
-        .shape-plus-title {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: #333;
-            margin-top: 80px;
-            margin-bottom: 60px;
-        }
-
-        .shape-plus-title .highlight-green {
-            color: #00cc66;
-        }
-
-        .features-grid {
+        .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-            padding: 0 20px;
+            gap: 2rem;
         }
 
-        .feature-card {
-            background: white;
-            padding: 40px 30px;
-            border-radius: 15px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-            text-align: center;
+        .service-card {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 165, 0, 0.05) 100%);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
             transition: all 0.3s ease;
-            border-top: 4px solid #ff4444;
+            position: relative;
+            overflow: hidden;
         }
 
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            transition: all 0.5s ease;
+            opacity: 0;
         }
 
-        .feature-card:nth-child(2) {
-            border-top-color: #00cc66;
+        .service-card:hover::before {
+            opacity: 1;
+            animation: rotate 10s linear infinite;
         }
 
-        .feature-card:nth-child(3) {
-            border-top-color: #007bff;
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
-        .feature-card:nth-child(4) {
-            border-top-color: #ffc107;
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2);
+            border-color: rgba(255, 215, 0, 0.5);
         }
 
-        .feature-card:nth-child(5) {
-            border-top-color: #6f42c1;
-        }
-
-        .feature-card:nth-child(6) {
-            border-top-color: #fd7e14;
-        }
-
-        .feature-icon {
+        .service-icon {
             font-size: 3rem;
-            margin-bottom: 20px;
-            color: #ff4444;
+            margin-bottom: 1.5rem;
+            color: #FFD700;
         }
 
-        .feature-card:nth-child(2) .feature-icon {
-            color: #00cc66;
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #FFD700;
         }
 
-        .feature-card:nth-child(3) .feature-icon {
-            color: #007bff;
+        .service-card p {
+            color: #cccccc;
+            line-height: 1.8;
         }
 
-        .feature-card:nth-child(4) .feature-icon {
-            color: #ffc107;
+        /* About Section */
+        .about {
+            padding: 6rem 0;
+            background: linear-gradient(45deg, #000000 0%, #0f0f0f 50%, #000000 100%);
         }
 
-        .feature-card:nth-child(5) .feature-icon {
-            color: #6f42c1;
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
         }
 
-        .feature-card:nth-child(6) .feature-icon {
-            color: #fd7e14;
+        .about-text h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .feature-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 15px;
+        .about-text p {
+            color: #cccccc;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
         }
 
-        .feature-description {
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #FFD700;
+            display: block;
+        }
+
+        .stat-label {
+            color: #cccccc;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #0f0f0f 0%, #000000 100%);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #FFD700;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(255, 215, 0, 0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 215, 0, 0.1);
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: #FFD700;
+            margin-left: 1rem;
+        }
+
+        .contact-form {
+            background: rgba(255, 215, 0, 0.05);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #FFD700;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            color: white;
             font-size: 1rem;
-            color: #666;
-            line-height: 1.6;
+            transition: all 0.3s ease;
         }
 
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #FFD700;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000000;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: #000000;
+            padding: 3rem 0 1rem;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .footer-content {
+            text-align: center;
+            color: #cccccc;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .features-grid {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .about-content {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 2rem;
             }
-            
-            .feature-card {
-                padding: 30px 20px;
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
             }
         }
 
-        @media (max-width: 768px) {
-            .section-two {
-                padding: 60px 15px;
-            }
-            
-            .section-two-title {
-                font-size: 2.5rem;
-            }
-            
-            .price-main {
-                font-size: 3rem;
-            }
-            
-            .price-crossed {
-                font-size: 2rem;
-            }
-            
-            .shape-plus-title {
-                font-size: 2rem;
-            }
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
         }
 
-        @media (max-width: 480px) {
-            .section-two-title {
-                font-size: 2rem;
-            }
-            
-            .price-main {
-                font-size: 2.5rem;
-            }
-            
-            .cta-button-section2 {
-                padding: 15px 35px;
-                font-size: 1.1rem;
-            }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
-            .hero-content {
-                padding: 0 20px;
-            }
-            
-            .brand-name {
-                font-size: 3rem;
-                letter-spacing: 3px;
-            }
-            
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .hero-tagline {
-                font-size: 1.8rem;
-            }
-            
-            .hero-description {
-                font-size: 1.1rem;
-            }
-            
-            .hero-features {
-                font-size: 1rem;
-            }
+
+        /* Floating elements */
+        .floating-element {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.1;
         }
-            
-            .hero-subtitle, .hero-description, .hero-features {
-                font-size: 1rem;
-            }
-            
-            .hero-tagline {
-                font-size: 1.4rem;
-            }
+
+        .floating-element:nth-child(1) {
+            top: 20%;
+            right: 10%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(2) {
+            bottom: 20%;
+            left: 10%;
+            animation: float 8s ease-in-out infinite reverse;
         }
     </style>
 </head>
 <body>
-    <section class="hero-section">
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">אוחנה הובלות</div>
+            <ul class="nav-links">
+                <li><a href="#home">בית</a></li>
+                <li><a href="#services">שירותים</a></li>
+                <li><a href="#about">אודות</a></li>
+                <li><a href="#contact">צור קשר</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="floating-element">🚛</div>
+        <div class="floating-element">📦</div>
         <div class="hero-content">
-            <div class="brand-name">דניאל פטרוב</div>
-            
-            <div class="hero-subtitle">אחרי שנים של ניסיון עם אלפי מתאמנים,</div>
-            
-            <h1 class="hero-title">
-                למדנו ש-<span class="highlight">הצלחה</span> דורשת<br>
-                יותר מ-<span class="red-highlight">רק אימונים</span>.
-            </h1>
-            
-            <div class="hero-description">
-                כדי להגיע לתוצאות אמיתיות<br>
-                ולהשיג התקדמות לאורך זמן, חובה לקבל הדרכה נכונה.
-            </div>
-            
-            <div class="hero-features">
-                אימונים מותאמים אישית • תוכניות תזונה מקצועיות • ליווי צמוד לאורך כל הדרך • קבוצת תמיכה ומוטיבציה • כלים דיגיטליים מתקדמים
-            </div>
-            
-            <div class="hero-tagline">
-                לכן פיתחנו שיטת SUCCESS
-            </div>
-            
-            <div class="hero-subtitle-bottom">
-                כי שינוי אמיתי זה הרבה יותר מאימונים
-            </div>
-            
-            <a href="#" class="cta-button">בואו נתחיל את המסע</a>
-            
-            <div class="bottom-text">
-                מצטרפים עכשיו ומקבלים תוכנית מותאמת אישית, ליווי צמוד למשך חודש מלא - לגמרי בחינם!
+            <h1>אוחנה הובלות</h1>
+            <p class="subtitle">פתרונות הובלה מקצועיים ואמינים עם מעל 15 שנות ניסיון</p>
+            <a href="#contact" class="cta-button">קבל הצעת מחיר</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title fade-in">השירותים שלנו</h2>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">🏠</div>
+                    <h3>הובלות דירות</h3>
+                    <p>הובלת דירות מקצועית עם אריזה ופריקה בטוחה. צוות מנוסה וציוד מתקדם להובלה ללא דאגות.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🏢</div>
+                    <h3>הובלות משרדים</h3>
+                    <p>הובלת משרדים מהירה ויעילה עם מינימום הפרעה לפעילות העסקית. התמחות בציוד רגיש ומחשבים.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">📦</div>
+                    <h3>הובלות מסחריות</h3>
+                    <p>שירותי הובלה מקצועיים לעסקים, כולל אחסון זמני ותיאום מלא של התהליך.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🚛</div>
+                    <h3>הובלות למרחקים ארוכים</h3>
+                    <p>הובלות בטוחות ומהירות לכל רחבי הארץ עם מעקב מלא ועדכונים בזמן אמת.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">📋</div>
+                    <h3>אריזה ופריקה</h3>
+                    <p>שירותי אריזה מקצועיים עם חומרי אריזה איכותיים להגנה מקסימלית על החפצים.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🏪</div>
+                    <h3>אחסון זמני</h3>
+                    <p>פתרונות אחסון גמישים ובטוחים למקרים בהם נדרש אחסון זמני במהלך ההובלה.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="section-two">
-        <div class="section-two-content">
-            <div class="section-two-subtitle">לזמן מוגבל בלבד! הצעה מיוחדת למתאמנים החדשים</div>
-            
-            <h2 class="section-two-title">
-                הזדמנות זהב להצטרף <span class="highlight-red">במחיר מיוחד!</span>
-            </h2>
-            
-            <div class="section-two-brand">החבילה המדהימה של דניאל פטרוב</div>
-            
-            <div class="price-section">
-                <div class="price-crossed">₪650</div>
-                <div class="chevron-down">▼▼▼</div>
-                <div class="price-main">רק ב-<span class="highlight-red">450</span> ש"ח לחודש!</div>
-                <div class="price-details">מחיר מיוחד לחודש הראשון</div>
-                <div class="price-guarantee">+ הערכה ראשונית בחינם</div>
-            </div>
-            
-            <div class="description-main">המבצע מוגבל לזמן קצר - רק ל-50 המתאמנים הראשונים!</div>
-            
-            <div class="description-small">החבילה כוללת: תוכנית אימונים מותאמת אישית + תזונה מקצועית + ליווי צמוד + גישה לאפליקציה + קבוצת תמיכה פרטית.</div>
-            
-            <div class="chevron-down">▼▼▼</div>
-            
-            <a href="#" class="cta-button-section2">← אני רוצה להתחיל ←</a>
-            
-            <div class="bottom-note">💡 זוהי ההזדמנות הטובה ביותר להתחיל את המסע שלך לגוף חלומותיך עם החיסכון הגדול ביותר!</div>
-            
-            <h3 class="shape-plus-title">מה אקבל ב<span class="highlight-green">חבילה המדהימה</span> של דניאל פטרוב</h3>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">💪</div>
-                    <h4 class="feature-title">אימונים מותאמים אישית</h4>
-                    <p class="feature-description">תוכניות אימון מותאמות בדיוק לרמתך, למטרותיך ולזמן הפנוי שלך. כל אימון מבוסס על הערכה מדעית של יכולותיך.</p>
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h2>מי אנחנו</h2>
+                    <p>אוחנה הובלות הוקמה מתוך אמונה שהובלה צריכה להיות חוויה פשוטה ונעימה. עם מעל 15 שנות ניסיון בתחום, אנחנו מביאים מקצועיות, אמינות ושירות אישי לכל לקוח.</p>
+                    <p>הצוות המנוסה שלנו מתמחה בכל סוגי ההובלות - מדירות קטנות ועד משרדים גדולים. אנחנו גאים בשירות המקצועי והאמין שלנו, ומתחייבים לעמוד בלוחות הזמנים ולשמור על החפצים שלכם כאילו היו שלנו.</p>
                 </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🥗</div>
-                    <h4 class="feature-title">תזונה מקצועית</h4>
-                    <p class="feature-description">תפריט תזונה מותאם אישית עם מתכונים קלים ופרקטיים. ליווי צמוד של דיאטנית מוסמכת לאורך כל הדרך.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h4 class="feature-title">אפליקציה חכמה</h4>
-                    <p class="feature-description">מעקב אחר ההתקדמות, תזכורות לאימונים, ספירת קלוריות אוטומטית ועוד המון כלים דיגיטליים מתקדמים.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">👥</div>
-                    <h4 class="feature-title">קבוצת תמיכה</h4>
-                    <p class="feature-description">הצטרפות לקהילה פרטית של מתאמנים עם אותן מטרות. שיתוף חוויות, עידוד הדדי ואתגרים מהנים.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">📞</div>
-                    <h4 class="feature-title">ליווי אישי 24/7</h4>
-                    <p class="feature-description">גישה ישירה אליי בווטסאפ לכל שאלה, עידוד ויעוץ. אני כאן בשבילך בכל שלב של המסע.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h4 class="feature-title">מעקב והתאמות</h4>
-                    <p class="feature-description">בדיקות התקדמות קבועות עם התאמת התוכנית לפי התוצאות. אנחנו מתאימים הכל כך שתגיע ליעדים בצורה הטובה ביותר.</p>
+                <div class="stats fade-in">
+                    <div class="stat">
+                        <span class="stat-number">1,500+</span>
+                        <span class="stat-label">הובלות מוצלחות</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">שנות ניסיון</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">98%</span>
+                        <span class="stat-label">שביעות רצון</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">זמינות</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">צור קשר</h2>
+            <div class="contact-content">
+                <div class="contact-info fade-in">
+                    <h3>פרטי התקשרות</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <strong>טלפון:</strong><br>
+                            050-123-4567
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <strong>דוא"ל:</strong><br>
+                            info@ohana-transport.co.il
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <strong>כתובת:</strong><br>
+                            רחוב הרצל 123, תל אביב
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div>
+                            <strong>שעות פעילות:</strong><br>
+                            א'-ה': 07:00-19:00<br>
+                            ו': 07:00-14:00
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form fade-in">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">שם מלא</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">טלפון</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">דוא"ל</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">פרטי ההובלה</label>
+                            <textarea id="message" name="message" placeholder="אנא פרט על סוג ההובלה, המקום, התאריך הרצוי ופרטים נוספים..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">קבל הצעת מחיר</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">אוחנה הובלות</div>
+                <p>&copy; 2025 אוחנה הובלות. כל הזכויות שמורות.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const phone = formData.get('phone');
+            const email = formData.get('email');
+            const message = formData.get('message');
+            
+            // Simple validation
+            if (!name || !phone || !email || !message) {
+                alert('אנא מלא את כל השדות');
+                return;
+            }
+            
+            // Simulate form submission
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'שולח...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('תודה על פנייתך! נחזור אליך בהקדם האפשרי.');
+                this.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
+        });
+
+        // Add floating animation to service cards
+        document.querySelectorAll('.service-card').forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+        });
+
+        // Add hover effects to stats
+        document.querySelectorAll('.stat').forEach(stat => {
+            stat.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05)';
+            });
+            
+            stat.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+
+        // Add scroll progress indicator
+        window.addEventListener('scroll', function() {
+            const scrolled = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.querySelector('.navbar').style.background = `linear-gradient(90deg, rgba(255, 215, 0, 0.1) ${scrolled}%, rgba(10, 10, 10, 0.95) ${scrolled}%)`;
+        });
+    </script>
 </body>
 </html>
